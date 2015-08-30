@@ -4,16 +4,16 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Random;
-import Agent.Agent;
-import Interaction.Interaction;
+import Agent.Agent_EP;
+import Interaction.Interaction_EP;
 
-class LooselyStabilizing_LE_simulator{
+class Loosta_LE_EP{
 	public static final int Roundnum = 10000000;
 	public static final int DataNum = 200;	//データ数
 	
-	public static final int s = 288;			//96�ȏ��3n�ȏ�
-	public static final int n_from = 40;	//nはn_from～n_toのデータをとる
-	public static final int n_to = 96;	
+	public static final int s = 192;			//96�ȏ��3n�ȏ�
+	public static final int n_from = 30;	//nはn_from～n_toのデータをとる
+	public static final int n_to = 64;	
 	
 	public static String RandomMethod = "Torus";	//Torus or RWP(Random Way Point)
 	public static String CoodinateSystem = "Rectanglar";	//直交座標(Rectanglar) or 極座標(Polar)
@@ -33,7 +33,7 @@ class LooselyStabilizing_LE_simulator{
         }
         
         for(int n=n_from; n<=n_to; n++){
-    		Agent agent[] = new Agent[n];
+    		Agent_EP agent[] = new Agent_EP[n];
 			int CTsum=0, HTsum=0;
 			double CTave=0.0 , HTave=0.0;
     		
@@ -43,7 +43,7 @@ class LooselyStabilizing_LE_simulator{
 				
 				//Agentの初期化
 				for(int i=0; i<n; i++)
-				agent[i] = new Agent(random.nextBoolean(), s);
+				agent[i] = new Agent_EP(random.nextBoolean(), s);
 				
 				for(int i=0; i<Roundnum; i++){
 					int leadercount=0;
@@ -68,7 +68,7 @@ class LooselyStabilizing_LE_simulator{
 						q = random.nextInt(n);		//p�Ƌ���1�ȓ��ɂ���m�[�h�̒���(���id�̒Ⴂ)�m�[�h��q�ɑ��
 					}
 					
-					Interaction.interaction(agent[p], agent[q], s);	//�𗬂�����
+					Interaction_EP.interaction(agent[p], agent[q], s);	//�𗬂�����
 					for(int j=0; j<n; j++) agent[j].Countdown();	//timer���J�E���g����
 		
 					if(CT_count_flag==true) CT++;

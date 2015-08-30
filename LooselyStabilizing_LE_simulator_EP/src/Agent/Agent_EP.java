@@ -1,5 +1,5 @@
 package Agent;
-public class Agent {
+public class Agent_EP {
 	
 	
 	private boolean leader;
@@ -13,7 +13,7 @@ public class Agent {
 //	private double desty;
 	/**/
 	
-	public Agent(boolean initleader, int s) {
+	public Agent_EP(boolean initleader, int s) {
 		this.leader = initleader;	
 		this.timer = s;
 //		this.x = inix; this.y = iniy;
